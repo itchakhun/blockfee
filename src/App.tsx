@@ -1,26 +1,85 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Col, Layout, Row, Tabs, Typography } from 'antd';
 import './App.css';
 
+import Products from './pages/Products';
+
+const { Content, Header } = Layout;
+const TabPane = Tabs.TabPane;
+
+const renderTabBar = (
+	props: any,
+	DefaultTabBar: React.ComponentType
+): React.ReactElement => <DefaultTabBar {...props} />;
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const tabs = [
+		{
+			tab: 'Products',
+			component: <Products />
+		},
+		{
+			tab: 'Batches',
+			component: ''
+		},
+		{
+			tab: 'Transactions',
+			component: ''
+		},
+		{
+			tab: 'Traceability',
+			component: ''
+		}
+	];
+	return (
+		<Layout>
+			<Header>
+				<Row style={{ height: '64px' }} align="middle">
+					<Col>
+						<Typography.Title
+							style={{ color: 'whitesmoke', margin: '0' }}
+							level={3}
+						>
+							Blockchain Coffee
+						</Typography.Title>
+					</Col>
+				</Row>
+			</Header>
+			<Content>
+				<Layout
+					style={{
+						padding: '2rem',
+						maxWidth: '1240px',
+						margin: 'auto'
+					}}
+				>
+					<Tabs
+						type="card"
+						tabPosition="left"
+						tabBarGutter={0}
+						renderTabBar={renderTabBar}
+					>
+						{tabs.map((tab) => (
+							<TabPane
+								key={tab.tab}
+								tab={tab.tab}
+								style={{
+									padding: '0.5rem 2rem',
+									background: 'white',
+									minHeight: 'calc(100vh - 64px - 4rem)'
+								}}
+							>
+								<Typography.Title level={2}>
+									{tab.tab}
+								</Typography.Title>
+								{tab.component}
+							</TabPane>
+						))}
+					</Tabs>
+				</Layout>
+			</Content>
+		</Layout>
+	);
 }
 
 export default App;
