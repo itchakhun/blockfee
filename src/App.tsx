@@ -3,6 +3,7 @@ import { Col, Layout, Row, Tabs, Typography } from 'antd';
 import './App.css';
 
 import Products from './pages/Products';
+import Batches from './pages/Batches';
 
 const { Content, Header } = Layout;
 const TabPane = Tabs.TabPane;
@@ -20,7 +21,8 @@ function App() {
 		},
 		{
 			tab: 'Batches',
-			component: ''
+			title: 'Product Batch Information',
+			component: <Batches />
 		},
 		{
 			tab: 'Transactions',
@@ -70,7 +72,7 @@ function App() {
 								}}
 							>
 								<Typography.Title level={2}>
-									{tab.tab}
+									{tab.title || tab.tab}
 								</Typography.Title>
 								{tab.component}
 							</TabPane>
