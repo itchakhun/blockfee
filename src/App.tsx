@@ -4,6 +4,7 @@ import './App.css';
 
 import Products from './pages/Products';
 import Batches from './pages/Batches';
+import Traceability from './pages/Traceability';
 
 const { Content, Header } = Layout;
 const TabPane = Tabs.TabPane;
@@ -29,8 +30,8 @@ function App() {
 			component: ''
 		},
 		{
-			tab: 'Traceability',
-			component: ''
+			tab: 'Traceability Report',
+			component: <Traceability />
 		}
 	];
 	return (
