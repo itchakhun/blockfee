@@ -10,6 +10,10 @@ import {
 	Descriptions
 } from 'antd';
 import { MinusCircleTwoTone } from '@ant-design/icons';
+import { ColumnsType } from 'antd/lib/table';
+import Address from '../components/Address';
+import ProcessorDetail from '../components/ProcessorDetail';
+import RoasterDetail from '../components/RoasterDetail';
 
 const layout = {
 	labelCol: { span: 4 },
@@ -18,58 +22,69 @@ const layout = {
 const tailLayout = {
 	wrapperCol: { offset: 4, span: 10 }
 };
-
-const columns = [
-	{
-		title: 'No'
-	},
-	{
-		title: 'Code',
-		dataIndex: 'code'
-	},
-	{
-		title: 'Batch No.',
-		dataIndex: 'batch_no'
-	},
-	{
-		title: 'Material Batch',
-		dataIndex: 'materials'
-	},
-	{
-		title: 'Detail 1',
-		dataIndex: 'detail_1'
-	},
-	{
-		title: 'Detail 2',
-		dataIndex: 'detail_2'
-	},
-	{
-		title: 'Environmental Sustainability',
-		dataIndex: 'env'
-	},
-	{
-		title: 'TUC Address',
-		dataIndex: 'tuc'
-	},
-	{
-		title: 'Timestamp',
-		dataIndex: 'timestamp'
-	},
-	{
-		title: 'Transaction'
-	}
-];
 const data = [
 	{
-		code: '12345',
+		no: 1,
 		name: 'Doi Change',
-		owner: '0x78d2d12a0bd78eaeaecd4236a93659b0d6e98d36',
-		tuc: '0xad008979d7c1a3c130f3091983dfe3209bf14e7f',
-		timestamp: new Date().getTime()
+		batch_no: '4959633856',
+		tuc: '0xd8d0964fd00af76e3e6fd2be15f9eed3caf928f8',
+		materials: '9335865699(2853858863), 3247298426(6523276346)',
+		timestamp: new Date().getTime(),
+		processor: {
+			origin: 'Doi Saket, Chaing Mai, Thailand',
+			variety: 'Heirloom Catimor',
+			description:
+				'This coffee is grown in the farm name “Doi Saket Farmers”',
+			altitude: '1,300+ m',
+			processing: 'Natural Process'
+		}
 	}
 ];
 
 export default function Products() {
+	const columns: ColumnsType<typeof data[0]> = [
+		{
+			title: 'No',
+			dataIndex: 'no'
+		},
+		{
+			title: 'Batch No',
+			dataIndex: 'batch_no'
+		},
+		{
+			title: 'Material Batch',
+			dataIndex: 'materials'
+		},
+		{
+			title: 'Processor',
+			dataIndex: 'processor',
+			render: (detail) => <ProcessorDetail detail={detail} />
+		},
+		{
+			title: 'Roaster',
+			dataIndex: 'roaster',
+			render: () => <RoasterDetail />
+		},
+		{
+			title: 'Environmental Sustainability',
+			dataIndex: 'env'
+		},
+		{
+			title: 'TUC Address',
+			dataIndex: 'tuc',
+			width: '140px',
+			render(text) {
+				return <Address>{text}</Address>;
+			}
+		},
+		{
+			title: 'Timestamp',
+			dataIndex: 'timestamp'
+		},
+		{
+			title: 'Transaction'
+		}
+	];
 	return (
 		<React.Fragment>
 			<Descriptions

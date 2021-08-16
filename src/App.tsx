@@ -51,7 +51,7 @@ function App() {
 				<Layout
 					style={{
 						padding: '2rem',
-						maxWidth: '1240px',
+						maxWidth: '1440px',
 						margin: 'auto'
 					}}
 				>
