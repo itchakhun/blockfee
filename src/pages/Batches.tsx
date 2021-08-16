@@ -14,6 +14,7 @@ import { ColumnsType } from 'antd/lib/table';
 import Address from '../components/Address';
 import ProcessorDetail from '../components/ProcessorDetail';
 import RoasterDetail from '../components/RoasterDetail';
+import EnvironmentDetail from '../components/EnvironmentDetail';
 
 const layout = {
 	labelCol: { span: 4 },
@@ -67,7 +68,8 @@ export default function Products() {
 		},
 		{
 			title: 'Environmental Sustainability',
-			dataIndex: 'env'
+			dataIndex: 'env',
+			render: () => <EnvironmentDetail />
 		},
 		{
 			title: 'TUC Address',
@@ -93,20 +95,19 @@ export default function Products() {
 				title="Product Information"
 			>
 				<Descriptions.Item label="Product Code">
-					Zhou Maomao
+					8588898993
 				</Descriptions.Item>
 				<Descriptions.Item label="Product Name">
-					1810000000
+					Medium roasted blend beans
 				</Descriptions.Item>
 				<Descriptions.Item label="Materials">
-					Hangzhou, Zhejiang
+					Doi Saket green beans, Doi Chang green beans
 				</Descriptions.Item>
 				<Descriptions.Item label="Product Owner">
-					empty
+					0xf04ada1b07cff3b09d7fd7cc9b342900e17f7938
 				</Descriptions.Item>
 				<Descriptions.Item label="BAC Address">
-					No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang,
-					China
+					0xc22d4a0c96122151d0f579000083484879dbb527
 				</Descriptions.Item>
 			</Descriptions>
 			<Table pagination={false} columns={columns} dataSource={data} />
